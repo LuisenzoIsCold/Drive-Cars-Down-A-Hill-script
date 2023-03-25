@@ -1,0 +1,224 @@
+
+                                                             --Goofy ahh shit code--
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Drive Cars Down A Hill", HidePremium = false, IntroText = "Thx For using", SaveConfig = true, ConfigFolder = "CC"})
+-- kiriot esp
+local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+
+ESP.Players = false
+ESP.Boxes = false
+ESP.Names = false
+ESP:Toggle(false)
+
+-- ExplosiveBarrel esp
+ESP:AddObjectListener(Workspace.Obstacles, {
+    Name = "MK82",
+    CustomName = "MK82",
+    Color = Color3.fromRGB(128, 0, 0),
+    IsEnabled = "MK82"
+})
+ESP.MK82 = false
+
+-- ExplosiveBarrel esp
+ESP:AddObjectListener(Workspace.Obstacles.REFACTOR_SERIES.Mines.Model, {
+    Name = "ExplosiveBarrel",
+    CustomName = "ExplosiveBarrel",
+    Color = Color3.fromRGB(255, 0, 0),
+    IsEnabled = "ExplosiveBarrel"
+})
+ESP.ExplosiveBarrel = false
+
+-- Mines esp
+ESP:AddObjectListener(Workspace.Obstacles.REFACTOR_SERIES.Mines.Model, {
+    Name = "Mine",
+    CustomName = "Mine",
+    Color = Color3.fromRGB(220, 20, 60),
+    IsEnabled = "Mine"
+})
+ESP.Mine = false
+
+---- visuals ----
+
+local esp = Window:MakeTab({
+	Name = "Visuals",
+	Icon = "rbxassetid://10802202912",
+	PremiumOnly = false
+})
+
+local Section = esp:AddSection({
+	Name = "Toggle Esp"
+})
+
+esp:AddToggle({
+	Name = "Esp Toggle",
+	Default = false,
+	Callback = function(Value)
+		ESP:Toggle(Value)
+	end    
+})
+
+local Section = esp:AddSection({
+	Name = "Esp settings"
+})
+
+esp:AddToggle({
+	Name = "Player Esp",
+	Default = false,
+	Callback = function(Value)
+		ESP.Players = Value
+	end    
+})
+
+esp:AddToggle({
+	Name = "Boxes",
+	Default = false,
+	Callback = function(Value)
+		ESP.Boxes = Value
+	end    
+})
+
+esp:AddToggle({
+	Name = "Names",
+	Default = false,
+	Callback = function(Value)
+		ESP.Names = Value
+	end    
+})
+
+local Section = esp:AddSection({
+	Name = "Prop Esp"
+})
+
+esp:AddToggle({
+	Name = "Mines Esp",
+	Default = false,
+	Callback = function(Value)
+		ESP.Mine = Value
+	end    
+})
+
+esp:AddToggle({
+	Name = "Explosive Barrel Esp",
+	Default = false,
+	Callback = function(Value)
+		ESP.ExplosiveBarrel = Value
+	end    
+})
+
+esp:AddToggle({
+	Name = "MK82 Esp",
+	Default = false,
+	Callback = function(Value)
+		ESP.MK82 = Value
+	end    
+})
+
+---- teleport ----
+
+local tp = Window:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://4483362458",
+	PremiumOnly = false
+})
+
+local Section = tp:AddSection({
+	Name = "The Desert"
+})
+
+tp:AddButton({
+	Name = "Tp to Dunes",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-79, 490, 408)
+  	end    
+})
+
+tp:AddButton({
+	Name = "tp to GhostTown",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-64, -1128, 6170)
+  	end
+})
+
+tp:AddButton({
+	Name = "tp to overgrowth",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-40, -2336, 9367)
+  	end    
+})
+
+tp:AddButton({
+	Name = "tp to GhostTown",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-64, -1128, 6170)
+  	end    
+})
+
+tp:AddButton({
+	Name = "tp to The Climb",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-62, -3106, 13617)
+  	end    
+})
+
+tp:AddButton({
+	Name = "tp to Military Base",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-59, -2713, 15458)
+  	end    
+})
+
+local Section = tp:AddSection({
+	Name = "The Basin"
+})
+
+tp:AddButton({
+	Name = "tp to Dried Up",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-111, -2633, 16572)
+  	end    
+})
+
+tp:AddButton({
+	Name = "tp to test zone",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-132, 287, -9)
+  	end    
+})
+
+
+local plr = Window:MakeTab({
+	Name = "Localplayer",
+	Icon = "rbxassetid://6961018885",
+	PremiumOnly = false
+})
+
+local Section = plr:AddSection({
+	Name = "Movement"
+})
+
+plr:AddSlider({
+	Name = "WalkSpeed",
+	Min = 16,
+	Max = 300,
+	Default = 16,
+	Color = Color3.fromRGB(0,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+
+plr:AddSlider({
+	Name = "Jumppower",
+	Min = 50,
+	Max = 300,
+	Default = 50,
+	Color = Color3.fromRGB(255,165,0),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end    
+})
